@@ -1,0 +1,21 @@
+We need....
+
+0) Uberbasic main menu.
+A) A tile, and the data it holds
+B) To arrange tiles in a map
+C) To generate arrangements of tiles with a map generator
+D) To save and load this map.
+DA) Walls for square rooms can block two hexes?
+E) To have a tile contain any of: entity, corpse, exit, wall, water, chasm
+F) To have a character.
+G) To have a character move around with a facing system.
+I) To have another entity on the board. Hardcoded at first.
+H) To have a character apply a simple ability when bumping another entity
+HA) To have killing an entity leave a corpse.
+<Here we probably need to start adding UI>
+HB) To have the option of eating a corpse.
+J) To have entities path towards the player
+I) To have another entity 'bump' the player and apply attacks. 
+IA) Make sure this is compatible with potential ranged attacks int he future.
+K) Sound system
+L) Main menu?

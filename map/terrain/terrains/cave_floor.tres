@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Terrain" format=3 uid="uid://8fyrld2750h2"]
+
+[ext_resource type="Script" uid="uid://c4swetnq3xcel" path="res://map/terrain/terrain.gd" id="1_bipi3"]
+[ext_resource type="Texture2D" uid="uid://bmph0uu4wd67d" path="res://assets/map/cave_64.png" id="2_rrt4q"]
+
+[resource]
+script = ExtResource("1_bipi3")
+label = "Cave Floor"
+label_key = "cave_floor"
+sprite = ExtResource("2_rrt4q")
+metadata/_custom_type_script = "uid://c4swetnq3xcel"

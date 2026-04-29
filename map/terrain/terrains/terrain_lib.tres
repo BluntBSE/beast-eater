@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TerrainLib" format=3 uid="uid://bh6w2yhcjjkob"]
+
+[ext_resource type="Script" uid="uid://kp3pku11mqsl" path="res://map/terrain/terrain_lib.gd" id="1_1r0g7"]
+[ext_resource type="Resource" uid="uid://8fyrld2750h2" path="res://map/terrain/terrains/cave_floor.tres" id="1_oqvnq"]
+
+[resource]
+script = ExtResource("1_1r0g7")
+cave = ExtResource("1_oqvnq")
+metadata/_custom_type_script = "uid://kp3pku11mqsl"

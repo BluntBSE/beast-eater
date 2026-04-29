@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://7n86pr0pa4sq"]
+
+[ext_resource type="Texture2D" uid="uid://d3t0uojurqlse" path="res://assets/map/square_basis.png" id="1_7va6k"]
+[ext_resource type="Script" uid="uid://t1jgeaasqe5u" path="res://map/terrain/tile.gd" id="1_wa2u1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7va6k"]
+size = Vector2(127, 128)
+
+[node name="Tile" type="Node2D" unique_id=788774546]
+script = ExtResource("1_wa2u1")
+
+[node name="TerrainSprite" type="Sprite2D" parent="." unique_id=583949402]
+unique_name_in_owner = true
+texture = ExtResource("1_7va6k")
+centered = false
+
+[node name="CollisionArea" type="Area2D" parent="." unique_id=866028949]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea" unique_id=1131126989]
+position = Vector2(64.5, 64)
+shape = SubResource("RectangleShape2D_7va6k")
