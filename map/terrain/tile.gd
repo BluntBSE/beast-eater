@@ -3,8 +3,8 @@ extends Node2D
 @export var terrain:Terrain
 @export var x_coord:int
 @export var y_coord:int
-@export var TILE_HEIGHT := 64
-@export var TILE_WIDTH := 64
+static var TILE_HEIGHT := 64
+static var TILE_WIDTH := 64
 
 var occupants := [] #$ Entities
 

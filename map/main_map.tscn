@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://7q62yb1r1qhx"]
 
 [ext_resource type="Script" uid="uid://dnebdrli2ynwu" path="res://map/main_map.gd" id="1_28ir7"]
+[ext_resource type="Script" uid="uid://6vfjc03pb4nk" path="res://map/player_camera.gd" id="2_qqobk"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_v0ysp"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="3_qqobk"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_ojhv3"]
@@ -14,13 +15,14 @@ script = ExtResource("1_28ir7")
 [node name="TileRoot" type="Node2D" parent="." unique_id=2050913034]
 unique_name_in_owner = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=152450121]
+[node name="Camera" type="Camera2D" parent="." unique_id=152450121]
 unique_name_in_owner = true
 top_level = true
 position = Vector2(1076, 551)
 editor_draw_limits = true
+script = ExtResource("2_qqobk")
 
-[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=2051892416]
+[node name="PhantomCameraHost" type="Node" parent="Camera" unique_id=2051892416]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("2_v0ysp")
