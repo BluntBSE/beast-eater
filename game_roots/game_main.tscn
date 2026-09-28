@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://boblx6e48btss"]
+
+[ext_resource type="PackedScene" uid="uid://7q62yb1r1qhx" path="res://map/main_map.tscn" id="1_eoop4"]
+
+[node name="GameMain" type="Node2D" unique_id=949509432]
+
+[node name="MainMap" parent="." unique_id=1180345178 instance=ExtResource("1_eoop4")]
+
+[node name="PlayerUI" type="CanvasLayer" parent="." unique_id=158759609]
+
+[node name="PlayerPanel" type="ColorRect" parent="PlayerUI" unique_id=1084638670]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/PlayerPanel" unique_id=104343364]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI/PlayerPanel/VBoxContainer" unique_id=1760193908]
+layout_mode = 2
+text = "Hunterman"
+fit_content = true
+
+[node name="TargetPanel" type="ColorRect" parent="PlayerUI" unique_id=1672067902]
+custom_minimum_size = Vector2(256, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/TargetPanel" unique_id=208940934]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/VBoxContainer" unique_id=764409597]
+layout_mode = 2
+text = "Hunterman"
+fit_content = true
+
+[node name="HPBar" type="ProgressBar" parent="PlayerUI" unique_id=31370758]
+self_modulate = Color(0, 1, 0, 1)
+offset_left = 256.0
+offset_right = 528.0
+offset_bottom = 27.0
+value = 50.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI/HPBar" unique_id=1645659753]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 271.0
+offset_bottom = 67.0
+text = "Hit Points: 0/100"
+
+[node name="CalorieBar" type="ProgressBar" parent="PlayerUI" unique_id=1968649495]
+self_modulate = Color(1, 1, 0, 1)
+offset_left = 256.0
+offset_top = 59.0
+offset_right = 528.0
+offset_bottom = 86.0
+value = 50.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI/CalorieBar" unique_id=1699035325]
+layout_mode = 0
+offset_top = 27.0
+offset_right = 271.0
+offset_bottom = 67.0
+text = "kCal: 0/2000"

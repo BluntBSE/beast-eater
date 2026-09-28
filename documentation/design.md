@@ -1,7 +1,39 @@
 # Design Overview
 
-## Hex Grid
+## Architecture
 
+#GameManager
+-Game manager mneed to track the state of what UI, if any, is open. It then needs to allow inputs to trickle down to the right spot (an inventory,or the game.)
+-This sort of implies taking things like WASD and parsing them into "Game left/Game up" and "UI left/UI up". Is a state machine necessary, or overkill? Could I simply assign
+-Multiple inputs (WASD) to Godot-defined inputs like "UI left/UI up" and let anything active consume that?...But then we still have the problem of tracking what's active.
+
+#Randomness - Bag of Tokens
+
+##UI
+
+What needs to be shown?
+
+FOR SURE:
+    Health
+    Kcal
+    Loaded abilities
+    
+    
+    Examining Enemies
+    Name
+    HP
+    Might
+    Fort
+    Agi
+    Will
+    Tags
+    Abilities
+    -And all their tags
+    -Description of tag?
+
+
+Combat log
+(pageable? Extended log?)
 
 ## Stats
 MIGHT:

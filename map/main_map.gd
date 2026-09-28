@@ -8,6 +8,7 @@ static var map_height := 32
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     load_debug_map()
+    TargetUtils.register_map(self)
 
     pass # Replace with function body.
 

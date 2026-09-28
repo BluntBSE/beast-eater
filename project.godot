@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 PhantomCameraManager="*uid://duq6jhf6unyis"
+TargetUtils="*uid://h0lq1xurqqtm"
+InputRouter="*uid://cu150htb2kj4g"
 
 [display]
 

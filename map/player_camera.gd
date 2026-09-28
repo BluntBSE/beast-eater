@@ -16,10 +16,10 @@ func _ready() -> void:
 
 
 func update_limits(cols:int, rows:int, width:int):
-    phantom_camera.limit_bottom = (rows * width) + 128
-    phantom_camera.limit_right = (rows * width) + 128
-    phantom_camera.limit_left = -128
-    phantom_camera.limit_top = -128
+    phantom_camera.limit_bottom = (rows * width) + Tile.TILE_WIDTH*8
+    phantom_camera.limit_right = (rows * width) + Tile.TILE_WIDTH*8
+    phantom_camera.limit_left = -Tile.TILE_WIDTH*8
+    phantom_camera.limit_top = -Tile.TILE_WIDTH*8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -42,4 +42,5 @@ func go_to_tile(pos:Vector2):
         y_coord = pos.y
 
     phantom_camera.position = Vector2(x_coord * Tile.TILE_WIDTH, y_coord * Tile.TILE_WIDTH)
+    %CursorSprite.position = Vector2(x_coord * Tile.TILE_WIDTH, y_coord * Tile.TILE_WIDTH)
     print("PC Position", phantom_camera.position)
