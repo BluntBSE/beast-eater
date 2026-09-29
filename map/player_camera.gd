@@ -10,7 +10,7 @@ var phantom_camera:PhantomCamera2D
 func _ready() -> void:
     phantom_camera = %PlayerPhantomCamera
     go_to_tile(Vector2(10,10))
-    update_limits(ActiveMap.map_width, ActiveMap.map_height, Tile.TILE_WIDTH)
+    update_limits(ActiveMap.MAP_WIDTH, ActiveMap.MAP_HEIGHT, Tile.TILE_WIDTH)
     
     pass # Replace with function body.
 

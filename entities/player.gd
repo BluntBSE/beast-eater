@@ -5,7 +5,7 @@ class_name Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    InputRouter.push_back(self)
+    #InputRouter.push_back(self) #$ Maybe we aren't going to use this at all, actually.
     pass # Replace with function body.
 
 
@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
     pass
     
     
-func handle_input(): #$ Player is sort of the resting state for input, I guess.
-    pass
+#$ func handle_input(event:InputEvent): #$ Player is sort of the resting state for input, I guess.
+#$    pass

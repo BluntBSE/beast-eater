@@ -43,7 +43,9 @@ Damage = Might Directly?
 
 FORTITUDE:
 HP = 10x FORTITUDE
+KCal Max = 250x FORTITUDE
 Fort saves: d20 >= 11 (attacker_might, defender_fortitude)
+
 
 AGILITY:
 10 AGI vs 10 AGI = 50% hit chance
