@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="7_4r6cq"]
 [ext_resource type="Texture2D" uid="uid://blx8rpobnwey7" path="res://assets/map/tileset_32.png" id="8_11shw"]
 
-[sub_resource type="Resource" id="Resource_4r6cq"]
-script = ExtResource("4_ojhv3")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1c26r"]
 texture = ExtResource("8_11shw")
 texture_region_size = Vector2i(32, 32)
@@ -121,6 +118,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_1c26r")
 
+[sub_resource type="Resource" id="Resource_4r6cq"]
+script = ExtResource("4_ojhv3")
+
 [node name="MainMap" type="Node2D" unique_id=1180345178]
 script = ExtResource("1_28ir7")
 
@@ -129,29 +129,42 @@ unique_name_in_owner = true
 
 [node name="PlayerCharacter" type="Node2D" parent="." unique_id=1698029886]
 
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1812363793]
+unique_name_in_owner = true
+tile_set = SubResource("TileSet_saqon")
+rendering_quadrant_size = 32
+
 [node name="Player" type="Node2D" parent="." unique_id=1907466484]
+unique_name_in_owner = true
 script = ExtResource("3_47jvc")
 
-[node name="Camera" type="Camera2D" parent="Player" unique_id=152450121]
+[node name="Sprite2D" type="TextureRect" parent="Player" unique_id=1671044415]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("7_4r6cq")
+expand_mode = 1
+
+[node name="CursorSprite" type="Sprite2D" parent="." unique_id=1711794440]
+unique_name_in_owner = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ojhv3")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=152450121]
 unique_name_in_owner = true
 top_level = true
 position = Vector2(1076, 551)
 editor_draw_limits = true
 script = ExtResource("2_qqobk")
 
-[node name="PhantomCameraHost" type="Node" parent="Player/Camera" unique_id=2051892416]
+[node name="PhantomCameraHost" type="Node" parent="Camera" unique_id=2051892416]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("2_v0ysp")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="Sprite2D" type="TextureRect" parent="Player" unique_id=1671044415]
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("7_4r6cq")
-expand_mode = 1
-
-[node name="PlayerPhantomCamera" type="Node2D" parent="Player" unique_id=914559771]
+[node name="PlayerPhantomCamera" type="Node2D" parent="." unique_id=914559771]
 unique_name_in_owner = true
 position = Vector2(1076, 551)
 script = ExtResource("3_qqobk")
@@ -159,13 +172,3 @@ snap_to_pixel = true
 tween_resource = SubResource("Resource_4r6cq")
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1812363793]
-unique_name_in_owner = true
-tile_set = SubResource("TileSet_saqon")
-rendering_quadrant_size = 32
-
-[node name="CursorSprite" type="Sprite2D" parent="." unique_id=1711794440]
-unique_name_in_owner = true
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ojhv3")

@@ -23,6 +23,10 @@ func unflatten(index:int, width:int) -> Vector2i:
 func _ready() -> void:
     load_debug_map()
     TargetUtils.register_map(self)
+    for tile:BETileData in map_array:
+        if tile.terrain == BSPMapMaker.TERRAIN_LIB.spawn:
+            spawn_entity(%Player, Vector2i(tile.x_coord, tile.y_coord))
+            pass
   
     _astar.region = Rect2i(0, 0, MAP_WIDTH, MAP_HEIGHT)
     _astar.cell_size = Vector2i(CELL_SIZE,CELL_SIZE)
@@ -39,11 +43,11 @@ func load_map(): #Takes in...What? A JSON?
     pass
 
 
-func round_local_position(local_position):
+func round_local_position(local_position:Vector2i):
     return tml.map_to_local(tml.local_to_map(local_position))
 
 func load_debug_map():
-    map_array = MapMaker.generate_bsp_map(MAP_WIDTH, MAP_HEIGHT)
+    map_array = BSPMapMaker.generate_bsp_map(MAP_WIDTH, MAP_HEIGHT)
     render_map(map_array)
 
 func render_map(tiles:Array)->void:
@@ -67,3 +71,25 @@ func teleport_entity_to_position(entity:Entity, pos:Vector2i):
 func teleport_camera_to_position():
     pass
     
+func spawn_entity(entity:Entity, pos:Vector2i):
+    var tile:BETileData = map_array[flatten(pos.x, pos.y, MAP_WIDTH)]
+    tile.append_occupant(entity)
+    entity.position = round_local_position(tml.map_to_local(Vector2i(pos.x, pos.y)))
+
+func spawn_player(pos:Vector2i):
+    #var player = Player.new()
+    pass
+
+func render_tile(coord:Vector2i):
+    #$ Make sure the tile is the right terrain
+    var tile:BETileData = map_array[flatten(coord.x, coord.y, MAP_WIDTH)]
+    tml.set_cell(coord, 1, tile.terrain.atlas_coordinates)
+    #$ If a non-creature entity is in the tile, render its sprite (by moving its node2D to the proper world space?)
+    if not tile.occupants.is_empty():
+        #$TODO fix for multiple occupants
+        var entity:Entity = tile.occupants[0]
+        var target_pos = round_local_position(coord)
+        entity.position = target_pos
+        pass
+    #$ If a creature is in the tile, render its sprite.
+    pass

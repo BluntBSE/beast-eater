@@ -20,7 +20,7 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 TargetUtils="*uid://h0lq1xurqqtm"
 InputRouter="*uid://cu150htb2kj4g"
 Scheduler="*uid://chp431wuiyi3v"
-MapMaker="*uid://c7clhd6wqfheb"
+BSPMapMaker="*uid://c7clhd6wqfheb"
 
 [display]
 
