@@ -1,9 +1,24 @@
 [gd_resource type="Resource" script_class="TerrainLib" format=3 uid="uid://bh6w2yhcjjkob"]
 
 [ext_resource type="Script" uid="uid://kp3pku11mqsl" path="res://map/terrain/terrain_lib.gd" id="1_1r0g7"]
-[ext_resource type="Resource" uid="uid://8fyrld2750h2" path="res://map/terrain/terrains/cave_floor.tres" id="1_oqvnq"]
+[ext_resource type="Script" uid="uid://c4swetnq3xcel" path="res://map/terrain/terrain.gd" id="1_oqvnq"]
+
+[sub_resource type="Resource" id="Resource_asf8g"]
+script = ExtResource("1_oqvnq")
+label = "floor"
+label_key = "floor"
+metadata/_custom_type_script = "uid://c4swetnq3xcel"
+
+[sub_resource type="Resource" id="Resource_oqvnq"]
+script = ExtResource("1_oqvnq")
+label = "wall"
+label_key = "wall"
+atlas_coordinates = Vector2i(1, 0)
+is_blocking = true
+metadata/_custom_type_script = "uid://c4swetnq3xcel"
 
 [resource]
 script = ExtResource("1_1r0g7")
-cave = ExtResource("1_oqvnq")
+floor = SubResource("Resource_asf8g")
+wall = SubResource("Resource_oqvnq")
 metadata/_custom_type_script = "uid://kp3pku11mqsl"

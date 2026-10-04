@@ -1,4 +1,5 @@
-extends Node
+extends RefCounted
+class_name AbilityInstance
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,9 +9,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    pass
-
-func start_game():
-    #$ Player needs to move to bottom middle of map, or 17, 31
-    #$ That should move camera as well
     pass

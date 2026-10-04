@@ -10,16 +10,16 @@ var phantom_camera:PhantomCamera2D
 func _ready() -> void:
     phantom_camera = %PlayerPhantomCamera
     go_to_tile(Vector2(10,10))
-    update_limits(ActiveMap.MAP_WIDTH, ActiveMap.MAP_HEIGHT, Tile.TILE_WIDTH)
+    update_limits(ActiveMap.MAP_WIDTH, ActiveMap.MAP_HEIGHT, 32)
     
     pass # Replace with function body.
 
 
 func update_limits(cols:int, rows:int, width:int):
-    phantom_camera.limit_bottom = (rows * width) + Tile.TILE_WIDTH*8
-    phantom_camera.limit_right = (rows * width) + Tile.TILE_WIDTH*8
-    phantom_camera.limit_left = -Tile.TILE_WIDTH*8
-    phantom_camera.limit_top = -Tile.TILE_WIDTH*8
+    phantom_camera.limit_bottom = (rows * width) + 32*8
+    phantom_camera.limit_right = (rows * width) + 32*8
+    phantom_camera.limit_left = -32*8
+    phantom_camera.limit_top = -32*8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,12 +35,12 @@ func _process(delta: float) -> void:
 
 
 func go_to_tile(pos:Vector2):
-    position = Vector2(pos.x *Tile.TILE_WIDTH, pos.y * Tile.TILE_WIDTH)
+    position = Vector2(pos.x * 32, pos.y * 32)
     if pos.x >= 0:
         x_coord = pos.x
     if pos.y >= 0:
         y_coord = pos.y
 
-    phantom_camera.position = Vector2(x_coord * Tile.TILE_WIDTH, y_coord * Tile.TILE_WIDTH)
-    %CursorSprite.position = Vector2(x_coord * Tile.TILE_WIDTH, y_coord * Tile.TILE_WIDTH)
+    phantom_camera.position = Vector2(x_coord * 32, y_coord * 32)
+    %CursorSprite.position = Vector2(x_coord * 32, y_coord * 32)
     print("PC Position", phantom_camera.position)

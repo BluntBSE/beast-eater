@@ -1,9 +1,9 @@
 extends Node2D
 class_name ActiveMap
 
-static var MAP_WIDTH := 32
-static var MAP_HEIGHT := 32
-static var CELL_SIZE := 64
+static var MAP_WIDTH := 30
+static var MAP_HEIGHT := 30
+static var CELL_SIZE := 32
 
 #$ Holds all the TileDatas.
 var map_array := []
@@ -15,7 +15,7 @@ func flatten(x:int, y:int, width:int):
     return (y * width) + x
 
 
-func unflatten(index:int, width:int):
+func unflatten(index:int, width:int) -> Vector2i:
     return Vector2i(index % width, index / width)
 
 
@@ -43,10 +43,27 @@ func round_local_position(local_position):
     return tml.map_to_local(tml.local_to_map(local_position))
 
 func load_debug_map():
-    var square_width:int = 128
-    var cols := MAP_WIDTH
-    var rows := MAP_HEIGHT
-    for col in cols:
-        for row in rows:
-            tml.set_cell(Vector2i(col,row),0, Vector2(0,0)) #$ TODO: Replace with picking from the
+    map_array = MapMaker.generate_bsp_map(MAP_WIDTH, MAP_HEIGHT)
+    render_map(map_array)
+
+func render_map(tiles:Array)->void:
+    for i in tiles.size():
+        var coord := unflatten(i, MAP_WIDTH)
+        var tile:BETileData = tiles[i]
+        
+        #$ Do I need a 'render_tile()'? Probably at some point
+        tml.set_cell(coord, 1, tile.terrain.atlas_coordinates)
     pass
+
+
+func get_be_tile_data(pos:Vector2i) -> BETileData: #$ Beast Eater TileData, because TileData is a native class.
+    var index = flatten(pos.x, pos.y, MAP_WIDTH)
+    var data = map_array[index]
+    return data
+    
+func teleport_entity_to_position(entity:Entity, pos:Vector2i):
+    pass
+    
+func teleport_camera_to_position():
+    pass
+    

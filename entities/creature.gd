@@ -1,11 +1,12 @@
 extends Entity
 class_name Creature
 
+
 @export var might:int = 1
 @export var fortitude:int = 1
 @export var agility:int = 1
 @export var will:int = 1
-@export var speed:int = 1
+@export var speed:int = 100
 @export var energy:int = 2500
 @export var burn_rate:int = 10
 @export var alive:bool = true
