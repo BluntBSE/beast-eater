@@ -19,3 +19,17 @@ I) To have another entity 'bump' the player and apply attacks.
 IA) Make sure this is compatible with potential ranged attacks int he future.
 K) Sound system
 L) Main menu?
+
+
+Last Action I Was Working On:
+    -Spawning the player at a given terrain
+    -TargetPanel
+    
+    
+What needs to go in the target panel:
+    -No creature: nothing
+    creature:
+        HP
+        Portrait
+        Tags
+        Abilities

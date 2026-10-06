@@ -10,6 +10,8 @@ var map_array := []
 var _astar = AStarGrid2D.new()
 @onready var tml:TileMapLayer = %TileMapLayer
 
+signal hovered_tile
+
 #$ Store a coordinate such that it is accessed by index in flat array.
 func flatten(x:int, y:int, width:int):
     return (y * width) + x
@@ -25,9 +27,13 @@ func _ready() -> void:
     TargetUtils.register_map(self)
     for tile:BETileData in map_array:
         if tile.terrain == BSPMapMaker.TERRAIN_LIB.spawn:
-            spawn_entity(%Player, Vector2i(tile.x_coord, tile.y_coord))
-            pass
-  
+            spawn_entity(%Player, Vector2i(tile.x_coord, tile.y_coord)) #$ TODO: Move this debug stuff out
+    
+    var debug_enemy = preload("res://entities/creature.tscn").instantiate()
+    add_child(debug_enemy)
+    var enemy_tile = unflatten(pick_random_floor(), MAP_WIDTH)
+    spawn_entity(debug_enemy, enemy_tile)
+    
     _astar.region = Rect2i(0, 0, MAP_WIDTH, MAP_HEIGHT)
     _astar.cell_size = Vector2i(CELL_SIZE,CELL_SIZE)
     _astar.offset = Vector2i(CELL_SIZE, CELL_SIZE) * 0.5 #$ This means midpoint I think
@@ -41,6 +47,16 @@ func _ready() -> void:
 func load_map(): #Takes in...What? A JSON?
 
     pass
+    
+
+func pick_random_floor():
+    var idx :=  randi_range(0, map_array.size()-1)
+    var tile:BETileData = map_array[idx]
+    if tile.terrain.label == "floor":
+        return idx
+    else:
+        return pick_random_floor()
+
 
 
 func round_local_position(local_position:Vector2i):
@@ -86,10 +102,31 @@ func render_tile(coord:Vector2i):
     tml.set_cell(coord, 1, tile.terrain.atlas_coordinates)
     #$ If a non-creature entity is in the tile, render its sprite (by moving its node2D to the proper world space?)
     if not tile.occupants.is_empty():
-        #$TODO fix for multiple occupants
+        #$TODO fix for multiple occupants. Maybe just always have creatures be the top in a list? Can sort.
+        #$ What can there be in a tile? A creature, an item. A corpse?
         var entity:Entity = tile.occupants[0]
         var target_pos = round_local_position(coord)
         entity.position = target_pos
         pass
     #$ If a creature is in the tile, render its sprite.
+    pass
+
+
+var _last_hovered_tile := Vector2i(-1, -1) #$ So we don't spam the console every frame
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion:
+        var mouse_pos := get_global_mouse_position()
+        var cell := tml.local_to_map(tml.to_local(mouse_pos))
+
+        if cell.x < 0 or cell.x >= MAP_WIDTH or cell.y < 0 or cell.y >= MAP_HEIGHT:
+            return #$ Mouse is off the edge of the map
+
+        if cell != _last_hovered_tile:
+            _last_hovered_tile = cell
+            var tile := get_be_tile_data(cell)
+            hovered_tile.emit(tile)
+            print("Tile at ", cell, ": ", tile.terrain.label, " occupants=", tile.occupants)
+
+func hover_tile():
     pass

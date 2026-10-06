@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c2dkdiphbps6h"]
+
+[ext_resource type="Script" uid="uid://0ufqcuk5qw4t" path="res://entities/creature.gd" id="1_e8ibe"]
+[ext_resource type="Texture2D" uid="uid://bmph0uu4wd67d" path="res://assets/map/cave_64.png" id="2_27ukq"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_s2qhw"]
+
+[node name="Creature" type="Node2D" unique_id=1564639596]
+script = ExtResource("1_e8ibe")
+sprite = ExtResource("2_27ukq")
+might = 2
+fortitude = 3
+agility = 4
+will = 5
+energy = 3000
+burn_rate = 30
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1188447447]
+modulate = Color(1, 0, 0, 1)
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_s2qhw")
+expand_mode = 1

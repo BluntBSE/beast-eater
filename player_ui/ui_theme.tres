@@ -1,0 +1,19 @@
+[gd_resource type="Theme" format=3 uid="uid://qlno7fd2qbey"]
+
+[ext_resource type="FontFile" uid="uid://xqhotj7p4wac" path="res://assets/fonts/Ubuntu_Sans_Mono/static/UbuntuSansMono-SemiBold.ttf" id="1_w71f7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w71f7"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[resource]
+default_font = ExtResource("1_w71f7")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+Panel/styles/panel = SubResource("StyleBoxFlat_w71f7")
+VBoxContainer/constants/separation = 16

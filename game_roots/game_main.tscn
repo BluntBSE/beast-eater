@@ -1,15 +1,19 @@
 [gd_scene format=3 uid="uid://boblx6e48btss"]
 
 [ext_resource type="PackedScene" uid="uid://7q62yb1r1qhx" path="res://map/main_map.tscn" id="1_eoop4"]
+[ext_resource type="Theme" uid="uid://qlno7fd2qbey" path="res://player_ui/ui_theme.tres" id="2_p6igr"]
+[ext_resource type="Script" uid="uid://c0yfwtc2rujyg" path="res://player_ui/target_panel/target_panel.gd" id="2_qdk5q"]
+[ext_resource type="Texture2D" uid="uid://bvha3e3enbx4k" path="res://assets/map/hex_basis.png" id="4_lyfq7"]
 
 [node name="GameMain" type="Node2D" unique_id=949509432]
 
 [node name="MainMap" parent="." unique_id=1180345178 instance=ExtResource("1_eoop4")]
+unique_name_in_owner = true
 
 [node name="PlayerUI" type="CanvasLayer" parent="." unique_id=158759609]
 
 [node name="PlayerPanel" type="ColorRect" parent="PlayerUI" unique_id=1084638670]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(420, 0)
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
@@ -28,29 +32,133 @@ layout_mode = 2
 text = "Hunterman"
 fit_content = true
 
-[node name="TargetPanel" type="ColorRect" parent="PlayerUI" unique_id=1672067902]
-custom_minimum_size = Vector2(256, 0)
+[node name="TargetPanel" type="Panel" parent="PlayerUI" unique_id=1739798013]
+custom_minimum_size = Vector2(420, 0)
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -258.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 3
-color = Color(0, 0, 0, 1)
+theme = ExtResource("2_p6igr")
+script = ExtResource("2_qdk5q")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/TargetPanel" unique_id=208940934]
+[node name="TargetPanelCreature" type="MarginContainer" parent="PlayerUI/TargetPanel" unique_id=1752112783]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p6igr")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/VBoxContainer" unique_id=764409597]
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/TargetPanel/TargetPanelCreature" unique_id=208940934]
 layout_mode = 2
-text = "Hunterman"
+
+[node name="CreatureLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=764409597]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Creature Label"
 fit_content = true
+
+[node name="CreatureHPLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=970024932]
+unique_name_in_owner = true
+layout_mode = 2
+text = "HP: 10/10"
+fit_content = true
+
+[node name="CreatureCalorieLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=166292977]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Calories: 300 MCal
+"
+fit_content = true
+
+[node name="CreatureBurnLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=434528401]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Burn Rate: 10MCal
+"
+fit_content = true
+
+[node name="ExampleTag1" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=513069584]
+layout_mode = 2
+text = "Fiery"
+fit_content = true
+
+[node name="ExampleTag2" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=925838844]
+layout_mode = 2
+text = "Metallic"
+fit_content = true
+
+[node name="ExampleTag3" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=1897643940]
+layout_mode = 2
+text = "Berserk"
+fit_content = true
+
+[node name="CreatureStats" type="HBoxContainer" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=1005175184]
+layout_mode = 2
+
+[node name="CreatureMightLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/CreatureStats" unique_id=777253449]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MI: 9"
+fit_content = true
+
+[node name="CreatureFortitudeLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/CreatureStats" unique_id=1144537421]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FOR: 9"
+fit_content = true
+
+[node name="CreatureAgilityLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/CreatureStats" unique_id=3005890]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AGI: 6"
+fit_content = true
+
+[node name="CreatureWillLabel" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/CreatureStats" unique_id=148604387]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WIL: 9"
+fit_content = true
+
+[node name="ExampleCreatureAbility" type="VBoxContainer" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer" unique_id=388358364]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CreatureBurnLabel5" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/ExampleCreatureAbility" unique_id=1319007497]
+clip_contents = false
+layout_mode = 2
+text = "Melee Attack"
+fit_content = true
+
+[node name="CreatureBurnLabel6" type="RichTextLabel" parent="PlayerUI/TargetPanel/TargetPanelCreature/VBoxContainer/ExampleCreatureAbility" unique_id=2059166118]
+layout_mode = 2
+text = "	2 Physical Damage"
+fit_content = true
+
+[node name="TargetCreaturePortrait" type="TextureRect" parent="PlayerUI/TargetPanel" unique_id=188043946]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 251.0
+offset_top = 16.0
+offset_right = 379.0
+offset_bottom = 144.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_lyfq7")
 
 [node name="HPBar" type="ProgressBar" parent="PlayerUI" unique_id=31370758]
 self_modulate = Color(0, 1, 0, 1)
